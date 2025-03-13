@@ -1,24 +1,41 @@
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  background-color: rgb(243, 243, 245);
+  color: #333;
+}
+
+.navbar {
+  background-color: rgb(28, 32, 38) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card {
   background-color: #f8f9fa;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
 }
 
 .card:hover {
   transform: scale(1.02);
-  transition: transform 0.2s;
-}
-
-.navbar {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .video-caption {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgb(28, 32, 38);
   color: white;
   padding: 20px;
   text-align: center;
 }
 
 .carousel-item video {
-  object-fit: cover; 
+  object-fit: cover;
+}
+
+.container {
+  padding: 20px 0;
+}
+
+h1,
+h2 {
+  color:rgb(18, 34, 62);
 }
