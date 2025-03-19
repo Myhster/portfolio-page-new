@@ -25,6 +25,7 @@ body {
   color: white;
   padding: 20px;
   text-align: center;
+  border-radius: 0 0 5px 5px;
 }
 
 .carousel-item video {
@@ -37,5 +38,31 @@ body {
 
 h1,
 h2 {
-  color:rgb(18, 34, 62);
+  color: rgb(18, 34, 62);
+}
+
+/* Anpassung der Karussell-Steuerungen */
+.custom-carousel .carousel-control-prev,
+.custom-carousel .carousel-control-next {
+  width: 30px; /* Kleinere Breite */
+  height: 30px; /* Kleinere Höhe */
+  top: 50%; /* Vertikal zentrieren */
+  transform: translateY(-50%);
+  background-color: gray; /* Grauer Hintergrund */
+  opacity: 0.8; /* Leichte Transparenz */
+  border-radius: 50%; /* Runde Form */
+}
+
+.custom-carousel .carousel-control-prev-icon,
+.custom-carousel .carousel-control-next-icon {
+  width: 15px; /* Kleinere Pfeile */
+  height: 15px;
+}
+
+.custom-carousel .carousel-control-prev {
+  left: 10px; /* Abstand vom Rand */
+}
+
+.custom-carousel .carousel-control-next {
+  right: 10px; /* Abstand vom Rand */
 }

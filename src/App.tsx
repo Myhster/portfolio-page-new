@@ -1,39 +1,83 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
-import { Carousel, Col, Container, Nav, Navbar, Row } from 'react-bootstrap';
-import React, { useState } from 'react';
+import {
+  Carousel,
+  Col,
+  Container,
+  Modal,
+  Nav,
+  Navbar,
+  Row,
+} from 'react-bootstrap';
+import React, { useRef, useState } from 'react';
 
 import CardComponent from './Card';
 
 function App() {
   const [index, setIndex] = useState(0);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedVideo, setSelectedVideo] = useState('');
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   const handleSelect = (selectedIndex: number) => {
     setIndex(selectedIndex);
+    const currentVideo = videoRefs.current[index];
+    if (currentVideo) {
+      currentVideo.pause();
+      currentVideo.currentTime = 0;
+    }
+    const nextVideo = videoRefs.current[selectedIndex];
+    if (nextVideo) {
+      nextVideo.play().catch(error => console.log("Play failed:", error));
+    }
   };
+
+  const handleVideoClick = (src: string) => {
+    setSelectedVideo(src);
+    setShowModal(true);
+  };
+
+    const handleVideoEnd = () => {
+      const nextIndex = (index + 1) % videoItems.length;
+      setIndex(nextIndex);
+      const nextVideo = videoRefs.current[nextIndex];
+      if (nextVideo) {
+        nextVideo
+          .play()
+          .catch((error) => console.log('Auto-play failed:', error));
+      }
+    };
 
   const videoItems = [
     {
-      src: 'https://youtube.com/[video1-link]',
-      caption: 'View and manage your inventory with a clean list.',
+      src: 'video/CollapseDragDrop.mp4',
+      caption: 'Rearrange items with drag & drop.',
     },
     {
-      src: 'https://youtube.com/[video2-link]',
-      caption: 'Organize products into categories.',
+      src: 'video/AddAndDeleteProducts.mp4',
+      caption: 'Add and remove products seamlessly.',
     },
     {
-      src: 'https://youtube.com/[video3-link]',
-      caption: 'Add products or scan barcodes effortlessly.',
+      src: 'video/AddNewCategoryAndColor.mp4',
+      caption: 'Create and color-code categories.',
     },
     {
-      src: 'https://youtube.com/[video4-link]',
-      caption: 'Keep track of your shopping needs.',
+      src: 'video/AddProductToShoppingList.mp4',
+      caption: 'Scan or add items to your shopping list.',
+    },
+    {
+      src: 'video/ThresholdAndShoppingList.mp4',
+      caption: 'Set thresholds for shopping alerts.',
+    },
+    {
+      src: 'video/UseFillLevel.mp4',
+      caption: 'Switch to fill-level tracking for single-item products.',
     },
   ];
+
   return (
     <>
-      {/* Sticky Navigation */}
       <Navbar bg='dark' variant='dark' expand='lg' sticky='top'>
         <Container>
           <Navbar.Brand href='#home'>Portfolio</Navbar.Brand>
@@ -49,22 +93,12 @@ function App() {
         </Container>
       </Navbar>
 
-      
       <Container className='my-4'>
-        
         <section id='about' className='mb-5'>
           <h1>Welcome to My Portfolio</h1>
-          <p>
-            I'm a Berlin-based self-taught developer with a strong foundation in
-            Flutter, React, JavaScript, and Python. I enjoy building practical,
-            user-focused applications and am continuously expanding my skills in
-            modern web and mobile development. Currently, I’m working on
-            projects like an inventory management app and exploring integrations
-            with cloud services and data analysis.
-          </p>
+          <p>[Dein Text hier...]</p>
         </section>
 
-        {/* Flutter Project */}
         <section id='flutter' className='mb-5'>
           <h2>Flutter Project</h2>
           <Row>
@@ -87,21 +121,31 @@ function App() {
               <Carousel
                 activeIndex={index}
                 onSelect={handleSelect}
-                interval={null}
+      interval={null} // Kein automatisches Wechseln durch Intervall
                 controls={true}
                 indicators={true}
+                className='custom-carousel'
               >
                 {videoItems.map((item, idx) => (
                   <Carousel.Item key={idx}>
                     <video
+            ref={(el) => {
+              videoRefs.current[idx] = el;
+            }}
                       width='100%'
-                      height='315'
+                      height='auto'
+                      style={{
+                        maxHeight: '315px',
+                        objectFit: 'contain',
+                        cursor: 'pointer',
+                      }}
                       src={item.src}
-                      autoPlay
+            autoPlay={idx === 0} // Nur erstes Video startet automatisch
                       muted
                       controls
-                      loop
                       className='d-block w-100'
+                      onClick={() => handleVideoClick(item.src)}
+            onEnded={handleVideoEnd} // Wechselt zum nächsten Video
                     />
                     <div className='video-caption'>
                       <p>{item.caption}</p>
@@ -129,7 +173,6 @@ function App() {
                 freeCodeCampLink='https://freecodecamp.org/certification/[username]/react'
               />
             </Col>
-            {/* Weitere React-Projekte hier */}
           </Row>
         </section>
 
@@ -192,6 +235,27 @@ function App() {
           </p>
         </footer>
       </Container>
+      <Modal
+        show={showModal}
+        onHide={() => setShowModal(false)}
+        size='lg'
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Video Preview</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <video
+            width='100%'
+            height='auto'
+            src={selectedVideo}
+            autoPlay
+            muted
+            controls
+            style={{ maxHeight: '80vh' }}
+          />
+        </Modal.Body>
+      </Modal>
     </>
   );
 }
