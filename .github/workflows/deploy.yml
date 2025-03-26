@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: ['main']
+    branches: ["main"]
 
 jobs:
   build-and-deploy:
@@ -14,7 +14,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: "18"
+          cache: "npm"
 
       - name: Install Dependencies
         run: npm install
@@ -22,11 +23,8 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Deploy
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: ./build
-
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
