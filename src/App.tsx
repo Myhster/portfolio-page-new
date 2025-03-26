@@ -46,12 +46,6 @@ function App() {
         <FlutterProject onVideoClick={handleVideoClick} />
         <ReactProjects />
         <JsPythonProjects />
-        <footer>
-          <p>
-            Contact: [deine-email] |{' '}
-            <a href='https://linkedin.com/in/[profil]'>LinkedIn</a>
-          </p>
-        </footer>
       </Container>
 
       <Modal
