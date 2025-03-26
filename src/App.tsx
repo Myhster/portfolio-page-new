@@ -13,6 +13,8 @@ import {
 import React, { useRef, useState } from 'react';
 
 import CardComponent from './Card';
+import { FaFreeCodeCamp } from 'react-icons/fa';
+import { SiReplit } from 'react-icons/si';
 
 function App() {
   const [index, setIndex] = useState(0);
@@ -29,7 +31,7 @@ function App() {
     }
     const nextVideo = videoRefs.current[selectedIndex];
     if (nextVideo) {
-      nextVideo.play().catch(error => console.log("Play failed:", error));
+      nextVideo.play().catch((error) => console.log('Play failed:', error));
     }
   };
 
@@ -38,16 +40,16 @@ function App() {
     setShowModal(true);
   };
 
-    const handleVideoEnd = () => {
-      const nextIndex = (index + 1) % videoItems.length;
-      setIndex(nextIndex);
-      const nextVideo = videoRefs.current[nextIndex];
-      if (nextVideo) {
-        nextVideo
-          .play()
-          .catch((error) => console.log('Auto-play failed:', error));
-      }
-    };
+  const handleVideoEnd = () => {
+    const nextIndex = (index + 1) % videoItems.length;
+    setIndex(nextIndex);
+    const nextVideo = videoRefs.current[nextIndex];
+    if (nextVideo) {
+      nextVideo
+        .play()
+        .catch((error) => console.log('Auto-play failed:', error));
+    }
+  };
 
   const videoItems = [
     {
@@ -107,21 +109,14 @@ function App() {
                 title='Inventory-App'
                 text='A Flutter app for inventory management with barcode scanning and shopping list features.'
                 imgSrc='/screenshots/inventory_screen.png'
-                buttonMain={{
-                  href: 'https://[username].github.io/inventory-app-web',
-                  text: 'Live Demo',
-                }}
-                buttonSecondary={{
-                  href: 'https://github.com/[username]/inventory-app',
-                  text: 'GitHub',
-                }}
+                githubLink='https://github.com/myhster/inventory-app'
               />
             </Col>
             <Col md={6} className='mb-4'>
               <Carousel
                 activeIndex={index}
                 onSelect={handleSelect}
-      interval={null} // Kein automatisches Wechseln durch Intervall
+                interval={null}
                 controls={true}
                 indicators={true}
                 className='custom-carousel'
@@ -129,9 +124,9 @@ function App() {
                 {videoItems.map((item, idx) => (
                   <Carousel.Item key={idx}>
                     <video
-            ref={(el) => {
-              videoRefs.current[idx] = el;
-            }}
+                      ref={(el) => {
+                        videoRefs.current[idx] = el;
+                      }}
                       width='100%'
                       height='auto'
                       style={{
@@ -140,12 +135,12 @@ function App() {
                         cursor: 'pointer',
                       }}
                       src={item.src}
-            autoPlay={idx === 0} // Nur erstes Video startet automatisch
+                      autoPlay={idx === 0}
                       muted
                       controls
                       className='d-block w-100'
                       onClick={() => handleVideoClick(item.src)}
-            onEnded={handleVideoEnd} // Wechselt zum nächsten Video
+                      onEnded={handleVideoEnd}
                     />
                     <div className='video-caption'>
                       <p>{item.caption}</p>
@@ -165,12 +160,12 @@ function App() {
               <CardComponent
                 title='25-5-Clock'
                 text='A Pomodoro timer with customizable session and break lengths.'
-                imgSrc='/screenshots/25-5-clock.png'
+                imgSrc='/images/clock.png'
                 buttonMain={{
-                  href: 'https://[username].github.io/25-5-clock',
+                  href: 'https://myhster.github.io/25-5-Clock/',
                   text: 'Live Demo',
                 }}
-                freeCodeCampLink='https://freecodecamp.org/certification/[username]/react'
+                freeCodeCampLink='https://www.freecodecamp.org/certification/fcce974e741-4197-46de-bef9-eae65ace4031/front-end-development-libraries'
               />
             </Col>
           </Row>
@@ -184,47 +179,156 @@ function App() {
               <CardComponent
                 title='Calculator'
                 text='A calculator with immediate execution logic.'
-                imgSrc='/screenshots/calculator.png'
+                imgSrc='/images/calculator.png'
                 buttonMain={{
-                  href: 'https://[username].github.io/calculator',
+                  href: 'https://myhster.github.io/calculator',
                   text: 'Live Demo',
                 }}
+                freeCodeCampLink='https://www.freecodecamp.org/certification/fcce974e741-4197-46de-bef9-eae65ace4031/front-end-development-libraries'
               />
             </Col>
             <Col md={4} className='mb-4'>
               <CardComponent
                 title='Markdown Previewer'
                 text='A tool to preview Markdown in real-time.'
-                imgSrc='/screenshots/markdown-previewer.png'
+                imgSrc='/images/markdown.png'
                 buttonMain={{
-                  href: 'https://[username].github.io/markdown-previewer',
+                  href: 'https://myhster.github.io/markdown-previewer',
                   text: 'Live Demo',
                 }}
+                freeCodeCampLink='https://www.freecodecamp.org/certification/fcce974e741-4197-46de-bef9-eae65ace4031/front-end-development-libraries'
               />
             </Col>
             <Col md={4} className='mb-4'>
               <CardComponent
                 title='Random Quote Machine'
                 text='A quote generator with color changes and tweet functionality.'
-                imgSrc='/screenshots/random-quote.png'
+                imgSrc='/images/quote-machine2.png'
                 buttonMain={{
-                  href: 'https://[username].github.io/random-quote-machine',
+                  href: 'https://myhster.github.io/random-quote-machine',
                   text: 'Live Demo',
                 }}
+                freeCodeCampLink='https://www.freecodecamp.org/certification/fcce974e741-4197-46de-bef9-eae65ace4031/front-end-development-libraries'
               />
             </Col>
             <Col md={4} className='mb-4'>
               <CardComponent
                 title='Drum Machine'
                 text='Create sounds by clicking pads or pressing keys.'
-                imgSrc='/screenshots/drum-machine.png'
+                imgSrc='/images/drum.png'
                 buttonMain={{
-                  href: 'https://[username].github.io/drum-machine',
+                  href: 'https://myhster.github.io/drum-machine',
                   text: 'Live Demo',
                 }}
+                freeCodeCampLink='https://www.freecodecamp.org/certification/fcce974e741-4197-46de-bef9-eae65ace4031/front-end-development-libraries'
               />
             </Col>
           </Row>
+        </section>
+
+        {/* JavaScript and Python */}
+        <section>
+          <div className='container' id='javascriptAndPython'>
+            <h2>JavaScript and Python</h2>
+            <div className='row row-cols-3 gy-2'>
+              <div className='col-sm'>
+                <div className='card listCard'>
+                  <div className='card-header'>
+                    <h4>List of completed JS projects</h4>
+                  </div>
+                  <ul className='list-group list-group-flush'>
+                    <li className='list-group-item'>Palindrome Checker</li>
+                    <li className='list-group-item'>Roman Numeral Converter</li>
+                    <li className='list-group-item'>Caesars Cipher</li>
+                    <li className='list-group-item'>
+                      Telephone Num. Validator
+                    </li>
+                    <li className='list-group-item'>Cash Register</li>
+                  </ul>
+                  <div className='card-footer'>
+                    <a
+                      href='https://www.freecodecamp.org/certification/fcce974e741-4197-46de-bef9-eae65ace4031/javascript-algorithms-and-data-structures'
+                      className='card-link'
+                      target='_blank'
+                      rel='noreferrer'
+                    >
+                      <FaFreeCodeCamp size='2em' />
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div className='col-sm'>
+                <div className='card listCard'>
+                  <div className='card-header'>
+                    <h4>List of Python projects</h4>
+                  </div>
+                  <ul className='list-group list-group-flush'>
+                    <li className='list-group-item'>
+                      Arithmetic Formatter{' '}
+                      <a
+                        href='https://replit.com/@Bobolove/boilerplate-arithmetic-formatter'
+                        target='_blank'
+                        rel='noreferrer'
+                      >
+                        <SiReplit />
+                      </a>
+                    </li>
+                    <li className='list-group-item'>
+                      Time Calculator{' '}
+                      <a
+                        href='https://replit.com/@Bobolove/boilerplate-time-calculator'
+                        target='_blank'
+                        rel='noreferrer'
+                      >
+                        <SiReplit />
+                      </a>
+                    </li>
+                    <li className='list-group-item'>
+                      Budget App{' '}
+                      <a
+                        href='https://replit.com/@Bobolove/boilerplate-budget-app'
+                        target='_blank'
+                        rel='noreferrer'
+                      >
+                        <SiReplit />
+                      </a>
+                    </li>
+                    <li className='list-group-item'>
+                      Polygon Area Calculator{' '}
+                      <a
+                        href='https://replit.com/@Bobolove/boilerplate-polygon-area-calculator-2'
+                        target='_blank'
+                        rel='noreferrer'
+                      >
+                        <SiReplit />
+                      </a>
+                    </li>
+                    <li className='list-group-item'>
+                      Probability Calculator{' '}
+                      <a
+                        href='https://replit.com/@Bobolove/boilerplate-probability-calculator'
+                        target='_blank'
+                        rel='noreferrer'
+                      >
+                        <SiReplit />
+                      </a>
+                    </li>
+                  </ul>
+                  <div className='card-footer'>
+                    <a
+                      href='https://www.freecodecamp.org/certification/fcce974e741-4197-46de-bef9-eae65ace4031/scientific-computing-with-python-v7'
+                      className='card-link'
+                      target='_blank'
+                      rel='noreferrer'
+                    >
+                      <FaFreeCodeCamp size='2em' />
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div className='col-sm'></div>
+            </div>
+          </div>
         </section>
 
         {/* Footer */}
