@@ -1,6 +1,7 @@
 {
   "name": "portfolio-page-new",
   "version": "0.1.0",
+  "homepage": "https://myhster.github.io/portfolio-page-new/",
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
