@@ -12,7 +12,7 @@ const ReactProjects: React.FC = () => (
           <CardComponent
             title='25-5-Clock'
             text='A Pomodoro timer with customizable session and break lengths.'
-            imgSrc='/images/clock.png'
+            imgSrc='/portfolio-page-new/images/clock.png'
             buttonMain={{
               href: 'https://myhster.github.io/25-5-Clock/',
               text: 'Live Demo',

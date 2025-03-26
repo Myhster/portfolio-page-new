@@ -12,7 +12,7 @@ const ProjectCards: React.FC = () => (
       <CardComponent
         title='Calculator'
         text='A calculator with immediate execution logic.'
-        imgSrc='/images/calculator.png'
+        imgSrc='/portfolio-page-new/images/calculator.png'
         buttonMain={{
           href: 'https://myhster.github.io/calculator',
           text: 'Live Demo',
@@ -24,7 +24,7 @@ const ProjectCards: React.FC = () => (
       <CardComponent
         title='Markdown Previewer'
         text='A tool to preview Markdown in real-time.'
-        imgSrc='/images/markdown.png'
+        imgSrc='/portfolio-page-new/images/markdown.png'
         buttonMain={{
           href: 'https://myhster.github.io/markdown-previewer',
           text: 'Live Demo',
@@ -36,7 +36,7 @@ const ProjectCards: React.FC = () => (
       <CardComponent
         title='Random Quote Machine'
         text='A quote generator with color changes and tweet functionality.'
-        imgSrc='/images/quote-machine2.png'
+        imgSrc='/portfolio-page-new/images/quote-machine2.png'
         buttonMain={{
           href: 'https://myhster.github.io/random-quote-machine',
           text: 'Live Demo',
@@ -48,7 +48,7 @@ const ProjectCards: React.FC = () => (
       <CardComponent
         title='Drum Machine'
         text='Create sounds by clicking pads or pressing keys.'
-        imgSrc='/images/drum.png'
+        imgSrc='/portfolio-page-new/images/drum.png'
         buttonMain={{
           href: 'https://myhster.github.io/drum-machine',
           text: 'Live Demo',
