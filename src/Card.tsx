@@ -8,6 +8,7 @@ import {
 } from 'react-bootstrap';
 import { FaFreeCodeCamp, FaGithub } from 'react-icons/fa';
 
+import IconLink from './components/IconLink';
 import React from 'react';
 
 interface CardProps {
@@ -29,13 +30,28 @@ const CardComponent: React.FC<CardProps> = ({
   freeCodeCampLink,
   githubLink,
 }) => {
+  const imageLink =
+    title === 'Inventory-App' && githubLink ? githubLink : buttonMain?.href;
+
+  const handleImageClick = () => {
+    if (imageLink) {
+      window.open(imageLink, '_blank', 'noreferrer');
+    }
+  };
+
   return (
     <Card className='h-100 shadow-sm'>
       {imgSrc && (
         <CardImg
           variant='top'
           src={imgSrc}
-          style={{ width: '100%', height: 350, objectFit: 'fill' }}
+          style={{
+            width: '100%',
+            height: 350,
+            objectFit: 'fill',
+            cursor: imageLink ? 'pointer' : 'default',
+          }}
+          onClick={imageLink ? handleImageClick : undefined}
         />
       )}
       <CardBody>
@@ -65,25 +81,13 @@ const CardComponent: React.FC<CardProps> = ({
             </Button>
           )}
           {freeCodeCampLink && (
-            <a
+            <IconLink
               href={freeCodeCampLink}
-              className='text-dark me-2'
-              rel='noreferrer'
-              target='_blank'
-            >
-              <FaFreeCodeCamp size={24} />
-            </a>
+              Icon={FaFreeCodeCamp}
+              className='me-2'
+            />
           )}
-          {githubLink && (
-            <a
-              href={githubLink}
-              className='text-dark'
-              rel='noreferrer'
-              target='_blank'
-            >
-              <FaGithub size={24} />
-            </a>
-          )}
+          {githubLink && <IconLink href={githubLink} Icon={FaGithub} />}
         </div>
       </CardBody>
     </Card>
