@@ -7,6 +7,7 @@ body {
 .navbar {
   background-color: rgb(28, 32, 38) !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 60px;
 }
 
 .card {
@@ -41,28 +42,31 @@ h2 {
   color: rgb(18, 34, 62);
 }
 
-/* Anpassung der Karussell-Steuerungen */
 .custom-carousel .carousel-control-prev,
 .custom-carousel .carousel-control-next {
-  width: 30px; /* Kleinere Breite */
-  height: 30px; /* Kleinere Höhe */
-  top: 50%; /* Vertikal zentrieren */
+  width: 30px;
+  height: 30px;
+  top: 50%;
   transform: translateY(-50%);
-  background-color: gray; /* Grauer Hintergrund */
-  opacity: 0.8; /* Leichte Transparenz */
-  border-radius: 50%; /* Runde Form */
+  background-color: gray;
+  opacity: 0.8;
+  border-radius: 50%;
 }
 
 .custom-carousel .carousel-control-prev-icon,
 .custom-carousel .carousel-control-next-icon {
-  width: 15px; /* Kleinere Pfeile */
+  width: 15px;
   height: 15px;
 }
 
 .custom-carousel .carousel-control-prev {
-  left: 10px; /* Abstand vom Rand */
+  left: 10px;
 }
 
 .custom-carousel .carousel-control-next {
-  right: 10px; /* Abstand vom Rand */
+  right: 10px;
+}
+
+section {
+  padding-top: 80px;
 }
