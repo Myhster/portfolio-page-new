@@ -78,7 +78,7 @@ const FlutterProject: React.FC<FlutterProjectProps> = ({ onVideoClick }) => {
             <CardComponent
               title='Inventory-App'
               text='A Flutter app for inventory management with barcode scanning and shopping list features.'
-              imgSrc='/screenshots/inventory_screen.png'
+              imgSrc='/images/InventoryImage.png'
               githubLink='https://github.com/myhster/inventory-app'
             />
           </Col>
