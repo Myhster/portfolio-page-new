@@ -79,7 +79,7 @@ const FlutterProject: React.FC<FlutterProjectProps> = ({ onVideoClick }) => {
               title='Inventory-App'
               text='A Flutter app for inventory management with barcode scanning and shopping list features.'
               imgSrc='/portfolio-page-new/images/InventoryImage.png'
-              githubLink='https://github.com/myhster/inventory-app'
+              githubLink='https://github.com/Myhster/inventory_app'
             />
           </Col>
           <Col md={6} className='mb-4'>
